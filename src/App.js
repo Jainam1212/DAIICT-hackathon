@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { HomeHeader } from "./components/Home";
+import { Homecontent } from "./components/Homecontent";
+import video from '../src/assets/215697_small.mp4'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar />
+        <HomeHeader />
+        <div className="homecontent">
+          <video src={video} autoPlay muted loop></video>
+          <Routes>
+            <Route path="/" element={<Homecontent />} />
+            <Route path="/dashboard" element={<Homecontent />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
